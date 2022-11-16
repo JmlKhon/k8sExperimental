@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: webapi
+  labels: 
+    app: webapi
+spec:
+  replicas: 4 
+  selector:
+    matchLabels:
+      app: webapi
+  template:
+    metadata:
+      labels: 
+         app: webapi
+    spec: 
+      containers:
+      - name: webapi
+        image: jmlkhon/weatherapi
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m" 
